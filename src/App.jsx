@@ -194,20 +194,40 @@ const App = () => {
     const toggle = (id) => setGoals(g => g.map(x => x.id === id ? { ...x, done: !x.done } : x));
     const remove = (id) => setGoals(g => g.filter(x => x.id !== id));
     return (
-      <div>
-        <form onSubmit={addGoal} className="flex gap-2 mb-4">
-          <input value={newGoal} onChange={(e) => setNewGoal(e.target.value)} placeholder="Add a goal (e.g. Complete Common App)" className="flex-1 px-4 py-2 rounded-md border" />
-          <button type="submit" className="px-4 py-2 bg-black text-white rounded-md">Add</button>
+      <div className="bg-white rounded-2xl shadow-md border border-black/5 p-8 max-w-2xl mx-auto">
+        <form onSubmit={addGoal} className="flex gap-3 mb-6">
+          <input 
+            value={newGoal} 
+            onChange={(e) => setNewGoal(e.target.value)} 
+            placeholder="Add a goal (e.g. Complete Common App)" 
+            className="flex-1 px-5 py-4 rounded-xl border border-black/10 bg-gray-50 focus:ring-2 focus:ring-[#e2ff8d] text-base outline-none transition" 
+          />
+          <button 
+            type="submit" 
+            className="px-6 py-3 bg-[#e2ff8d] text-black rounded-xl font-semibold shadow hover:bg-[#d6f86a] transition-all"
+          >
+            Add
+          </button>
         </form>
-        <div className="space-y-2">
+        <div className="space-y-3">
           {goals.length === 0 && <div className="text-sm text-gray-400">No goals yet.</div>}
           {goals.map(g => (
-            <div key={g.id} className="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50">
-              <label className="flex items-center gap-3">
-                <input type="checkbox" checked={g.done} onChange={() => toggle(g.id)} />
-                <span className={`${g.done ? 'line-through text-gray-400' : ''}`}>{g.text}</span>
+            <div key={g.id} className="flex items-center justify-between p-4 rounded-xl bg-gray-50 hover:bg-[#f8fcf0] border border-black/5 transition-all">
+              <label className="flex items-center gap-3 cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  checked={g.done} 
+                  onChange={() => toggle(g.id)} 
+                  className="accent-[#e2ff8d] w-5 h-5 rounded-full border-gray-300 focus:ring-[#e2ff8d]"
+                />
+                <span className={`text-base ${g.done ? 'line-through text-gray-400' : 'text-gray-700'}`}>{g.text}</span>
               </label>
-              <button onClick={() => remove(g.id)} className="text-xs text-red-500">Remove</button>
+              <button 
+                onClick={() => remove(g.id)} 
+                className="text-xs text-red-500 px-3 py-1 rounded-lg hover:bg-red-50 transition"
+              >
+                Remove
+              </button>
             </div>
           ))}
         </div>
@@ -516,15 +536,17 @@ const App = () => {
         )}
 
         {/* Navigation Tabs */}
-        <nav className="flex gap-2 mb-8 overflow-x-auto no-scrollbar pb-2 shrink-0">
+        <nav className="flex gap-3 mb-8 overflow-x-auto no-scrollbar pb-2 shrink-0">
           {['Overview', 'Deadlines', 'Strategy', 'Scores', 'Financial Aid', 'Essays'].map((item) => (
             <button
               key={item}
               onClick={() => setActiveTab(item)}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all border
+              className={`px-7 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all border shadow-sm
                 ${activeTab === item 
-                  ? 'bg-[#1a1a1a] text-white border-transparent shadow-md' 
-                  : 'bg-white text-gray-500 border-black/5 hover:border-black/20'}`}
+                  ? 'bg-[#e2ff8d] text-black border-[#e2ff8d] shadow-lg scale-105' 
+                  : 'bg-white text-gray-500 border-black/10 hover:border-[#e2ff8d] hover:bg-[#f8fcf0] hover:text-black/80'}
+                hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#e2ff8d]`}
+              style={{ minWidth: 120 }}
             >
               {item}
             </button>
@@ -716,7 +738,7 @@ const App = () => {
             <div className="col-span-12 lg:col-span-9 space-y-6">
               {/* Goals */}
               {activeNav === 'goals' && (
-                <div className="bg-white rounded-lg p-8 shadow-sm border border-black/5">
+                <div className="bg-white rounded-2xl shadow-md border border-black/5 p-8">
                   <h2 className="text-2xl font-semibold mb-4">Goals</h2>
                   <p className="text-sm text-gray-500 mb-6">Create measurable goals and milestones for your applications.</p>
                   <GoalsSection />
@@ -725,7 +747,7 @@ const App = () => {
 
               {/* Chat */}
               {activeNav === 'chat' && (
-                <div className="bg-white rounded-lg p-8 shadow-sm border border-black/5">
+                <div className="bg-white rounded-2xl shadow-md border border-black/5 p-8">
                   <h2 className="text-2xl font-semibold mb-4">Inbox</h2>
                   <p className="text-sm text-gray-500 mb-4">Direct messages, counselor notes, and AI assistant replies.</p>
                   <ChatSection />
@@ -734,7 +756,7 @@ const App = () => {
 
               {/* Library */}
               {activeNav === 'lib' && (
-                <div className="bg-white rounded-lg p-8 shadow-sm border border-black/5">
+                <div className="bg-white rounded-2xl shadow-md border border-black/5 p-8">
                   <h2 className="text-2xl font-semibold mb-4">Library</h2>
                   <p className="text-sm text-gray-500 mb-4">Search the curated colleges library and add entries to your list.</p>
                   <div>
@@ -776,7 +798,7 @@ const App = () => {
 
               {/* Network */}
               {activeNav === 'network' && (
-                <div className="bg-white rounded-lg p-8 shadow-sm border border-black/5">
+                <div className="bg-white rounded-2xl shadow-md border border-black/5 p-8">
                   <h2 className="text-2xl font-semibold mb-4">Connect</h2>
                   <p className="text-sm text-gray-500 mb-4">Find and connect with counselors, alumni, and peers.</p>
                   <div className="space-y-3">
@@ -799,7 +821,7 @@ const App = () => {
 
               {/* Verify */}
               {activeNav === 'verify' && (
-                <div className="bg-white rounded-lg p-8 shadow-sm border border-black/5">
+                <div className="bg-white rounded-2xl shadow-md border border-black/5 p-8">
                   <h2 className="text-2xl font-semibold mb-4">Verify</h2>
                   <p className="text-sm text-gray-500 mb-4">Track required documents for your applications.</p>
                   <div className="space-y-4">
@@ -829,7 +851,7 @@ const App = () => {
 
               {/* Docs */}
               {activeNav === 'docs' && (
-                <div className="bg-white rounded-lg p-8 shadow-sm border border-black/5">
+                <div className="bg-white rounded-2xl shadow-md border border-black/5 p-8">
                   <h2 className="text-2xl font-semibold mb-4">Docs</h2>
                   <p className="text-sm text-gray-500 mb-4">Guides, templates, and resources for essays, testing, and financial aid.</p>
                   <div className="space-y-3">
@@ -842,7 +864,7 @@ const App = () => {
 
               {/* Support */}
               {activeNav === 'support' && (
-                <div className="bg-white rounded-lg p-8 shadow-sm border border-black/5">
+                <div className="bg-white rounded-2xl shadow-md border border-black/5 p-8">
                   <h2 className="text-2xl font-semibold mb-4">Support</h2>
                   <p className="text-sm text-gray-500 mb-4">Send us a message and we'll get back to you.</p>
                   <SupportForm />
@@ -851,7 +873,7 @@ const App = () => {
 
               {/* Settings */}
               {activeNav === 'settings' && (
-                <div className="bg-white rounded-lg p-8 shadow-sm border border-black/5">
+                <div className="bg-white rounded-2xl shadow-md border border-black/5 p-8">
                   <h2 className="text-2xl font-semibold mb-4">Settings</h2>
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
@@ -871,7 +893,7 @@ const App = () => {
 
               {/* Fallback */}
               {(!['goals','chat','lib','network','verify','docs','support','settings'].includes(activeNav)) && (
-                <div className="bg-white rounded-lg p-8 shadow-sm border border-black/5">
+                <div className="bg-white rounded-2xl shadow-md border border-black/5 p-8">
                   <h2 className="text-2xl font-semibold mb-4">{activeNav.charAt(0).toUpperCase() + activeNav.slice(1)}</h2>
                   <p className="text-gray-600">{pagePlaceholders[activeNav] || `This is the ${activeNav} page.`}</p>
                 </div>
@@ -989,26 +1011,27 @@ const NavItem = ({ icon: Icon, label = '', active = false, onClick, anim = false
   return (
     <div
       onClick={onClick}
-      className={`w-full cursor-pointer transition-all duration-300 group relative flex items-center ${expanded ? 'justify-start pl-4' : 'justify-center'}`}
+      className={`w-full cursor-pointer transition-all duration-300 group relative flex items-center ${expanded ? 'justify-start pl-4' : 'justify-center'} ${active ? 'bg-[#181818] shadow-lg' : 'hover:bg-[#232323]'} rounded-2xl my-1`}
+      style={{ minHeight: 60 }}
     >
       {/* Icon pill - animate only the icon when anim is true. */}
       <div
-        className={`w-14 h-14 p-3.5 rounded-2xl flex items-center justify-center ${active ? 'bg-white/10 text-white' : 'text-[#e2ff8d] hover:text-white hover:bg-white/5'} ${anim ? 'animate-icon-pop' : ''}`}
+        className={`w-14 h-14 p-3.5 rounded-2xl flex items-center justify-center ${active ? 'bg-[#e2ff8d] text-black shadow-md' : 'text-[#e2ff8d] hover:text-white hover:bg-white/5'} ${anim ? 'animate-icon-pop' : ''}`}
         style={anim ? { animationDelay: `${200 + index * 80}ms` } : {}}
       >
-        <Icon size={20} strokeWidth={2} className="relative z-10" />
+        <Icon size={22} strokeWidth={2} className="relative z-10" />
       </div>
 
       {/* Label shown only when expanded (clicking logo). No animation applied so it does not animate during initial mount. */}
       {expanded && (
-        <span className={`ml-4 text-sm font-semibold ${active ? 'text-white' : 'text-gray-300'}`}>
+        <span className={`ml-4 text-base font-semibold ${active ? 'text-[#e2ff8d]' : 'text-gray-200 group-hover:text-white'}`}>
           {label}
         </span>
       )}
 
       {/* Active Indicator (green glow on the left when selected) */}
       {active && (
-        <div className={`absolute inset-y-0 left-0 bg-[#e2ff8d] rounded-r-full shadow-[0_0_18px_#e2ff8d] ${expanded ? 'w-2' : 'w-2'}`} />
+        <div className={`absolute inset-y-3 left-0 w-2 bg-[#e2ff8d] rounded-r-full shadow-[0_0_18px_#e2ff8d]`} />
       )}
     </div>
   );
