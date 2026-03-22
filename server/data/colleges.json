@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "name": "Princeton University",
+    "city": "Princeton",
+    "state": "NJ",
+    "acceptance_rate": "~4%",
+    "mid_range": "1500-1580",
+    "undergrad_enrollment": 5500
+  },
+  {
+    "id": "2",
+    "name": "Massachusetts Institute of Technology",
+    "city": "Cambridge",
+    "state": "MA",
+    "acceptance_rate": "~4%",
+    "mid_range": "1510-1580",
+    "undergrad_enrollment": 4600
+  },
+  {
+    "id": "3",
+    "name": "Harvard University",
+    "city": "Cambridge",
+    "state": "MA",
+    "acceptance_rate": "~3.4%",
+    "mid_range": "1490-1580",
+    "undergrad_enrollment": 7100
+  },
+  {
+    "id": "4",
+    "name": "Stanford University",
+    "city": "Stanford",
+    "state": "CA",
+    "acceptance_rate": "~3.9%",
+    "mid_range": "1500-1570",
+    "undergrad_enrollment": 7700
+  },
+  {
+    "id": "5",
+    "name": "Yale University",
+    "city": "New Haven",
+    "state": "CT",
+    "acceptance_rate": "~4.4%",
+    "mid_range": "1480-1580",
+    "undergrad_enrollment": 6600
+  },
+  {
+    "id": "6",
+    "name": "University of California, Berkeley",
+    "city": "Berkeley",
+    "state": "CA",
+    "acceptance_rate": "~11%",
+    "mid_range": "Test Blind",
+    "undergrad_enrollment": 32800
+  },
+  {
+    "id": "7",
+    "name": "University of California, Los Angeles",
+    "city": "Los Angeles",
+    "state": "CA",
+    "acceptance_rate": "~9%",
+    "mid_range": "Test Blind",
+    "undergrad_enrollment": 32400
+  },
+  {
+    "id": "8",
+    "name": "University of Michigan",
+    "city": "Ann Arbor",
+    "state": "MI",
+    "acceptance_rate": "~18%",
+    "mid_range": "1350-1530",
+    "undergrad_enrollment": 32600
+  }
+]

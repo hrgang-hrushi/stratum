@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+  <rect width="128" height="128" rx="20" fill="#0b0f10" />
+  <!-- Neon stacked chevrons to resemble provided logo -->
+  <g transform="translate(64,36)" style="mix-blend-mode:screen">
+    <path d="M0 -20 L44 20 L-44 20 Z" fill="#e2ff8d" />
+    <path d="M0 -6 L34 20 L-34 20 Z" fill="#0b0f10" />
+    <path d="M0 10 L24 34 L-24 34 Z" fill="#e2ff8d" />
+    <path d="M0 24 L12 44 L-12 44 Z" fill="#0b0f10" />
+  </g>
+  <!-- subtle glow -->
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g transform="translate(64,36)" filter="url(#glow)">
+    <path d="M0 -20 L44 20 L-44 20 Z" fill="#dff683" opacity="0.25" />
+  </g>
+</svg>

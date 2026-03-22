@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Stratum — College Assistant",
+  "version": "0.1.0",
+  "description": "Sidebar assistant for college applications — injects a dashboard UI into application websites.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Stratum"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["index.html", "assets/*", "favicon.ico"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
